@@ -10,32 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_02_111559) do
+ActiveRecord::Schema[7.0].define(version: 20_230_502_111_559) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "movies", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.string "image_url"
-    t.integer "year "
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'movies', force: :cascade do |t|
+    t.string 'title'
+    t.text 'description'
+    t.string 'image_url'
+    t.integer 'year '
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "setting_select_movies", force: :cascade do |t|
-    t.string "genres"
-    t.string "popularity"
-    t.integer "year"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'setting_select_movies', force: :cascade do |t|
+    t.string 'genres'
+    t.string 'popularity'
+    t.integer 'year'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "login"
-    t.string "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'users', force: :cascade do |t|
+    t.string 'login'
+    t.string 'password'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
-
 end

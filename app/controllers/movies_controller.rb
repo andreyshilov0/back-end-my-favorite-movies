@@ -1,15 +1,13 @@
 class MovieController < ApplicationController
-  
-  def index 
+  def index
     @movies = Movie.all
   end
 
-  def new 
+  def new
     @movie = Movie.new
   end
 
   def destroy
     @movie = Movie.destroy
   end
-
 end
