@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MovieController < ApplicationController
   def index
     @movies = Movie.all
