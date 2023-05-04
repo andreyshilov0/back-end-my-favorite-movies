@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  validates :login, :password, presence: true, uniqueness: true
+  
+  validates :login, presence: true, uniqueness: true
+  
 end
