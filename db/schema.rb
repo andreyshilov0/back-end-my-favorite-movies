@@ -20,21 +20,26 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_04_161101) do
     t.string "image_url"
     t.integer "year"
     t.boolean "watched"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_favorite_movies_on_user_id"
   end
 
   create_table "genres", force: :cascade do |t|
     t.string "title"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_genres_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "login"
-    t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "favorite_movies", "users"
+  add_foreign_key "genres", "users"
 end
