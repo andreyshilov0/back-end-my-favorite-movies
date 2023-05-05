@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  belongs_to :favorite_movies
-  belongs_to :genres
+  has_many :genres
+  has_many :favorite_movies
   
   validates :login, presence: true, uniqueness: true
   

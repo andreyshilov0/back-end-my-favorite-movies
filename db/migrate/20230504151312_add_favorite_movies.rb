@@ -5,7 +5,7 @@ class AddFavoriteMovies < ActiveRecord::Migration[7.0]
       t.text :description
       t.string :image_url
       t.integer :year
-      t.boolean :watched
+      t.boolean :watched, default: false
       t.belongs_to :user, null: false, foreign_key: true
 
       t.timestamps
