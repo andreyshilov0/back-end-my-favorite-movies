@@ -22,7 +22,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: kodep
 
-  password: <%= ENV['back-end-my-favorite-movies'] %>
+  password: <%= ENV['BACK_END_MY_FAVORITE_MOVIES'] %>
 
 development:
   <<: *default
