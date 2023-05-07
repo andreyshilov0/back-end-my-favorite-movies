@@ -63,6 +63,8 @@ group :development do
 
   gem 'faraday', '~> 2.7', '>= 2.7.4'
 
+  gem 'pry', '~> 0.14.2'
+
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
