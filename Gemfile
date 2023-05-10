@@ -65,6 +65,8 @@ group :development do
 
   gem 'pry', '~> 0.14.2'
 
+  gem 'dotenv-rails'
+
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
