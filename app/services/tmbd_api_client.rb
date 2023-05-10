@@ -11,15 +11,17 @@ class GetTmbdApi
     headers: { 'Content-Type' => 'application/json' }
   )
 
+  private
+
   def get_api_data(_url, _params = {})
-    @genres_url = instance_url_request.get('movie/genre/list')
+    @genres_url = instance_url_request.get('movie/genre/list', _params = {})
 
     @discover_movie_url = instance_url_request.get('discover/movie',
                                                    _params = {})
 
-    @movie_by_id_url = instance_url_request('movie/', _params = {})
+    @movie_by_id_url = instance_url_request.get('movie/', _params = {})
 
-    @total_page_url = instance_url_request('discover/movie', _params = {})
+    @total_page_url = instance_url_request.get('discover/movie', _params = {})
   end
 
   def genres_movie
