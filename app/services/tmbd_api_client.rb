@@ -1,5 +1,5 @@
 require 'faraday'
-require 'json'
+require 'pry'
 
 class GetTmbdApi
   API_KEY = ENV['API_KEY']
@@ -11,44 +11,48 @@ class GetTmbdApi
     headers: { 'Content-Type' => 'application/json' }
   )
 
-  def request_genres_movie
-    response_genres = instance_url_request.get('genre/movie/list', { language: 'en-US' })
-    parsed_response = JSON.parse(response_genres&.body || '{}')
-    @genres = parsed_response
-    @genres = @genres['genres']
+  def get_api_data(_url, _params = {})
+    @genres_url = instance_url_request.get('movie/genre/list')
+
+    @discover_movie_url = instance_url_request.get('discover/movie',
+                                                   _params = {})
+
+    @movie_by_id_url = instance_url_request('movie/', _params = {})
+
+    @total_page_url = instance_url_request('discover/movie', _params = {})
+  end
+
+  def genres_movie
+    response_api_data = get_api_data(@genres_url)
+    @genres = JSON.parse(response_api_data.body || '{}')
     @genres
   rescue JSON::ParserError, TypeError => e
-    puts e
+    logger.info(e)
   end
 
-  def request_discover_movie(sort_by, page, with_genres, year, vote_avarege)
-    response_data_movies = instance_url_request.get('discover/movie',
-    { language: 'en-US', sort_by: "#{sort_by}", page: "#{page}", with_genres: "#{with_genres}", year: "#{year}",
-    vote_avarege: "#{vote_avarege}" })
-    parsed_response = JSON.parse(response_data_movies&.body || '{}')
-    @movie_parameters = parsed_response
+  def discover_movie
+    response_api_data = get_api_data(@discover_movie_url,
+                                     _params => { sort_by => 'sort_by', page => 'page', with_genres => 'with_genres', year => 'year',
+                                                  vote_avarege => 'vote_avarege' })
+    @movie_parameters = JSON.parse(response_api_data&.body || '{}')
     @movie_parameters
   rescue JSON::ParserError, TypeError => e
-    puts e
+    logger.info(e)
   end
 
-  def request_movie_by_id(id)
-    response_data_movies_by_id = instance_url_request.get("movie/#{id}", { language: 'en-US' })
-    parsed_response = JSON.parse(response_data_movies_by_id&.body || '{}')
-    response = parsed_response
-    @movie_by_id = response['id']
+  def movie_by_id
+    response_api_data = get_api_data(@movie_by_id_url, _params => { id => 'id' })
+    @movie_by_id = JSON.parse(response_api_data&.body || '{}')
     @movie_by_id
   rescue JSON::ParserError, TypeError => e
-    puts e
+    logger.info(e)
   end
 
-  def request_total_pages
-    response_total_page_count = instance_url_request.get('discover/movie', { language: 'en-US' })
-    parsed_response = JSON.parse(response_total_page_count&.body || '{}')
-    response = parsed_response
-    @total_page = response['total_pages']
+  def total_pages
+    response_api_data = get_api_data(@total_page_url, _params => { total_page => 'total_page' })
+    @total_page = JSON.parse(response_api_data&.body || '{}')
     @total_page
   rescue JSON::ParserError, TypeError => e
-    puts e
+    logger.info(e)
   end
 end
