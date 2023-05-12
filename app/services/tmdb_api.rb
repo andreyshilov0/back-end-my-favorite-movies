@@ -15,19 +15,19 @@ class TmdbApi
   end
 
   def genres_movie
-    response_api_data = get_api_data('genre/movie/list')
+    get_api_data('genre/movie/list')
   end
 
   def discover_movie(sort_by, page, with_genres, year, vote_average)
-    response_api_data = get_api_data('discover/movie', { 'sort_by' => sort_by, 'page' => page, 'with_genres' => with_genres, 'year' => year,
+    get_api_data('discover/movie', { 'sort_by' => sort_by, 'page' => page, 'with_genres' => with_genres, 'year' => year,
                                                          'vote_average' => vote_average })
   end
 
   def movie_by_id(id)
-    response_api_data = get_api_data("movie/#{id}")
+    get_api_data("movie/#{id}")
   end
 
   def total_pages
-    response_api_data = get_api_data('discover/movie', { 'total_pages' => 'total_pages' })
+    get_api_data('discover/movie', { 'total_pages' => 'total_pages' })
   end
 end
