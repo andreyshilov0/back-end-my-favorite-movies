@@ -100,6 +100,10 @@ GEM
     faraday-net_http (3.0.2)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    graphiql-rails (1.9.0)
+      railties
+      sprockets-rails
+    graphql (2.0.21)
     i18n (1.13.0)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.1.6)
@@ -247,6 +251,8 @@ DEPENDENCIES
   debug
   dotenv-rails
   faraday (~> 2.7, >= 2.7.4)
+  graphiql-rails (~> 1.9)
+  graphql (~> 2.0)
   importmap-rails
   jbuilder
   pg (~> 1.1)
