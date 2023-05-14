@@ -20,7 +20,7 @@ class TmdbApi
 
   def discover_movie(sort_by, page, with_genres, year, vote_average)
     get_api_data('discover/movie', { 'sort_by' => sort_by, 'page' => page, 'with_genres' => with_genres, 'year' => year,
-                                                         'vote_average' => vote_average })
+                                     'vote_average' => vote_average })
   end
 
   def movie_by_id(id)

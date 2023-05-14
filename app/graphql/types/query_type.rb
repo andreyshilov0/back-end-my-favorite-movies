@@ -9,7 +9,7 @@ module Types
 
     # TODO: remove me
     field :users, [Types::UserType], null: false,
-      description: "List users"
+                                     description: 'List users'
     def users
       User.all
     end

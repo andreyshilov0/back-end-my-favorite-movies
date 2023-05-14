@@ -67,9 +67,9 @@ group :development do
 
   gem 'dotenv-rails'
 
-  gem "graphql", "~> 2.0"
+  gem 'graphql', '~> 2.0'
 
-  gem "graphiql-rails", "~> 1.9"
+  gem 'graphiql-rails', '~> 1.9'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
