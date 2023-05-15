@@ -1,13 +1,8 @@
 module Types
   class QueryType < Types::BaseObject
-    # Add `node(id: ID!) and `nodes(ids: [ID!]!)`
     include GraphQL::Types::Relay::HasNodeField
     include GraphQL::Types::Relay::HasNodesField
 
-    # Add root-level fields here.
-    # They will be entry points for queries on your schema.
-
-    # TODO: remove me
     field :users, [Types::UserType], null: false,
                                      description: 'List users'
     def users
@@ -20,6 +15,28 @@ module Types
 
     def user(id:)
       User.find(id)
+    end
+
+    field :genres, [Types::GenreType], null: false,
+                                       description: 'List genres'
+
+    def genres
+      Genre.all
+    end
+
+    field :favorite_movies, [Types::FavoriteMovieType], null: false,
+                                                        description: 'List movies'
+
+    def favorite_movies
+      FavoriteMovie.all
+    end
+
+    field :favorite_movie, [Types::UserType], null: false do
+      argument :id, ID, required: true
+    end
+
+    def favorite_movie(id:)
+      FavoriteMovie.find(id)
     end
   end
 end

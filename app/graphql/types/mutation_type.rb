@@ -1,7 +1,7 @@
 module Types
   class MutationType < Types::BaseObject
+    field :favorite_movie_add, mutation: Mutations::FavoriteMovieAdd
     field :favorite_movie_delete, mutation: Mutations::FavoriteMovieDelete
-    field :genre_delete, mutation: Mutations::GenreDelete
     # TODO: remove me
     # field :test_field, String, null: false,
     #                            description: 'An example field added by the generator'
