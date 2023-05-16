@@ -31,12 +31,25 @@ module Types
       FavoriteMovie.all
     end
 
-    field :favorite_movie, [Types::UserType], null: false do
+    field :favorite_movie, [Types::FavoriteMovieType], null: false do
       argument :id, ID, required: true
     end
 
     def favorite_movie(id:)
       FavoriteMovie.find(id)
+    end
+
+    field :favorite_movie_discover, [Types::MovieParametersType], null: false do
+      argument :sort_by, String, required: true
+      argument :page, Integer, required: true
+      argument :with_genres, String, required: true
+      argument :year, Integer, required: true
+      argument :vote_average, Integer, required: true
+      argument :popularity, Integer, required: true
+    end
+
+    def favorite_movie_discover(sort_by:, page:, with_genres:, year:, vote_average:, popularity:)
+      FavoriteMovie.find(sort_by, page, with_genres, year, vote_average, popularity)
     end
   end
 end

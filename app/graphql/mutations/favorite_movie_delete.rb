@@ -13,7 +13,7 @@ module Mutations
                                           extensions: favorite_movie.errors.to_hash
       end
 
-      { favorite_movie: }
+      { favorite_movie: favorite_movie}
     end
   end
 end
