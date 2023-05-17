@@ -71,6 +71,8 @@ group :development do
 
   gem 'graphiql-rails', '~> 1.9'
 
+  gem 'rails-i18n'
+
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 

@@ -7,13 +7,13 @@ module Mutations
     argument :id, ID, required: true
 
     def resolve(id:)
-      favorite_movie = ::FavoriteMovie.find(id)
+      favorite_movie = FavoriteMovie.find(id)
       unless favorite_movie.destroy
         raise GraphQL::ExecutionError.new 'Error deleting favorite_movie',
                                           extensions: favorite_movie.errors.to_hash
       end
 
-      { favorite_movie: favorite_movie}
+      { favorite_movie: }
     end
   end
 end
