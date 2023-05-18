@@ -4,6 +4,6 @@ module Types
     include GraphQL::Types::Relay::HasNodesField
 
     field :genres, resolver: Queries::Genres
-    field :favorite_movie, resolver: Queries::FavoriteMovie
+    field :favorite_movies, resolver: Queries::FavoriteMovies
   end
 end

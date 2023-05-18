@@ -8,21 +8,14 @@ module Mutations
     def resolve(id:)
       genres_id = id.to_i
       favorite_genres = TmdbApi.genres_movie['genres']
-      genre_id = favorite_genres.fetch(genres_id)['id']
-      genres_name = favorite_genres.fetch(genres_id)['name']
+      genre_parameters = favorite_genres.fetch(genres_id)
+      favorite_genre = Genre.new(id: genre_parameters['id'], title: genre_parameters['name'],
+                                  user_id: ApplicationController.current_user)
+      return if favorite_genre.save
 
-      favorite_genre = Genre.new("id": genre_id, "title": genres_name, "user_id": 1)
-
-      if favorite_genre.save
-        {
-          favorite_genres:,
-          errors: []
-        }
-      else
-        {
-          errors: favorite_genres.errors
-        }
-      end
+      {
+        errors: []
+      }
     end
   end
 end
