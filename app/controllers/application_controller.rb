@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::API
-  def self.current_user
-    user = User.find_by(id: 1)
-    current_user = user.id
+  def current_user
+    User.find_by(id: 1)
+    # current_user = user.id
 
     # Не совсем понятна модель работы, к примеру, у нас есть модель User, тобишь
     # user = User.new(id: '1', login: 'Jack') у этой модели мы можем обратиться через ассоциации к

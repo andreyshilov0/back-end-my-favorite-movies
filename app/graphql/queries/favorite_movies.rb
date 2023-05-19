@@ -5,7 +5,9 @@ module Queries
     type [Types::FavoriteMovieType], null: false
 
     def resolve
-      ::FavoriteMovie.all
+      response_app_controller = ApplicationController.new
+      response = response_app_controller.current_user
+      response.favorite_movies
     end
 
     # Если нам не нужны ни FavoriteMovie ни Genres в запросах, как мы тогда сможем обращаться к ним с фронта?
