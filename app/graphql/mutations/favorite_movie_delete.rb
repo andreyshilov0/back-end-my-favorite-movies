@@ -12,8 +12,6 @@ module Mutations
         raise GraphQL::ExecutionError.new 'Error deleting favorite_movie',
                                           extensions: favorite_movie.errors.to_hash
       end
-
-      { favorite_movie: }
     end
   end
 end
