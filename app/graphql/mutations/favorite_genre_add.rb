@@ -23,6 +23,7 @@ module Mutations
       return if favorite_genre.save
 
       {
+        favorite_genre:,
         errors: []
       }
     end

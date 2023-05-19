@@ -16,6 +16,7 @@ module Mutations
       return if favorite_movie.save
 
       {
+        favorite_movie:,
         errors: []
       }
     end
