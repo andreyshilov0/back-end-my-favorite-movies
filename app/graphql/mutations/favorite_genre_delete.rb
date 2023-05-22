@@ -9,7 +9,7 @@ module Mutations
     def resolve(id:)
       favorite_genre = Genre.find(id)
       unless favorite_genre.destroy
-        raise GraphQL::ExecutionError.new 'Error deleting favorite_genre',
+        raise GraphQL::ExecutionError.new I18n.t('favorite_genre_delete'),
                                           extensions: favorite_genre.errors.to_hash
       end
 

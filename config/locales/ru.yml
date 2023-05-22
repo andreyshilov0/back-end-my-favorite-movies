@@ -1,3 +1,6 @@
 ru:
   list_genres: "Список жанров"
   list_favorite_movies: "Список фильмов"
+  favorite_movie_update: "Ошибка при обновлении фильмов"
+  favorite_genre_delete: "Ошибка удаления жанров"
+  favorite_movie_delete: "Ошибка удаления фильма"

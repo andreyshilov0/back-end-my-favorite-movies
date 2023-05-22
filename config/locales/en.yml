@@ -1,3 +1,6 @@
 en:
   list_genres: "List genres"
   list_favorite_movies: "List movies"
+  favorite_movie_update: "Error updating favorite_movie"
+  favorite_genre_delete: "Error deleting favorite_genre"
+  favorite_movie_delete: "Error deleting favorite_movie"

@@ -73,6 +73,8 @@ group :development do
 
   gem 'rails-i18n'
 
+  gem 'rack-cors'
+
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
