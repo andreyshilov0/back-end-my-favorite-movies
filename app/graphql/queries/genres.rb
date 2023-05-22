@@ -5,9 +5,8 @@ module Queries
     type [Types::GenreType], null: false
 
     def resolve
-      response_app_controller = ApplicationController.new
-      response = response_app_controller.current_user
-      response.genres
+      response_app_controller = ApplicationController.current_user
+      response_app_controller.genres
     end
   end
 end

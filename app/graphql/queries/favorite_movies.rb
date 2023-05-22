@@ -5,9 +5,8 @@ module Queries
     type [Types::FavoriteMovieType], null: false
 
     def resolve
-      response_app_controller = ApplicationController.new
-      response = response_app_controller.current_user
-      response.favorite_movies
+      response_app_controller = ApplicationController.current_user
+      response_app_controller.favorite_movies
     end
   end
 end
