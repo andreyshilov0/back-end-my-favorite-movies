@@ -1,6 +1,8 @@
 en:
   list_genres: "List genres"
   list_favorite_movies: "List movies"
+  list_movie_by_discover: "Movie parameters"
   favorite_movie_update: "Error updating favorite_movie"
   favorite_genre_delete: "Error deleting favorite_genre"
   favorite_movie_delete: "Error deleting favorite_movie"
+  total_pages: "Total pages"

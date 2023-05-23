@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module Mutations
   class FavoriteGenreDelete < BaseMutation
     field :favorite_genre, Types::GenreType, null: false

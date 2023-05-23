@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module Types
   class FavoriteMovieType < Types::BaseObject
     field :id, ID, null: false
@@ -8,5 +6,6 @@ module Types
     field :image_url, String
     field :year, Integer
     field :watched, Boolean
+    field :user_id, ID, null: false
   end
 end
