@@ -12,7 +12,7 @@ class TmdbApi
   end
 
   def get_api_data(url, params = {})
-    response = tmdb_api.instance_faraday_url.get(url, params)
+    response = instance_faraday_url.get(url, params)
     JSON.parse(response.body || '{}')
   rescue JSON::ParserError, TypeError => e
     logger.info(e)
