@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -66,6 +64,14 @@ group :development do
   gem 'pry', '~> 0.14.2'
 
   gem 'dotenv-rails'
+
+  gem 'graphql', '~> 2.0'
+
+  gem 'graphiql-rails', '~> 1.9'
+
+  gem 'rails-i18n'
+
+  gem 'rack-cors'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
