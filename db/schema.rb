@@ -27,7 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_504_161_101) do
   end
 
   create_table 'genres', force: :cascade do |t|
-    t.string 'title'
+    t.string 'name'
     t.bigint 'user_id', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false

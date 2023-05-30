@@ -5,7 +5,6 @@ module Queries
     type [Types::GenreType], null: false
 
     def resolve
-      current_user = context[:current_user]
       current_user.genres
     end
   end

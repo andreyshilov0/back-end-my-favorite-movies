@@ -10,7 +10,7 @@ module Mutations
       current_user = context[:current_user]
       all_received_genres = tmdb_api.genres_movie['genres']
       genre_parameters = all_received_genres.fetch(index_genres)
-      favorite_genre = current_user.genres.build(id: genre_parameters['id'], title: genre_parameters['name'])
+      favorite_genre = current_user.genres.build(id: genre_parameters['id'], name: genre_parameters['name'])
 
       return if favorite_genre.save
 
