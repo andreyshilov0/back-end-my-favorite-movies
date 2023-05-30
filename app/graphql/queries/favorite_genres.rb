@@ -5,7 +5,7 @@ module Queries
     type [Types::GenreType], null: false
 
     def resolve
-      current_user_context.genres
+      current_user.genres
     end
   end
 end

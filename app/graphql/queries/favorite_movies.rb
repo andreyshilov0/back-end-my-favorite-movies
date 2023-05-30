@@ -5,7 +5,7 @@ module Queries
     type [Types::FavoriteMovieType], null: false
 
     def resolve
-      current_user_context.favorite_movies
+      current_user.favorite_movies
     end
   end
 end
