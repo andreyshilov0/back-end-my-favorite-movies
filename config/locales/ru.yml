@@ -6,3 +6,4 @@ ru:
   favorite_genre_delete: "Ошибка удаления жанров"
   favorite_movie_delete: "Ошибка удаления фильма"
   total_pages: "Общее число страниц"
+  user: "Пользователь"

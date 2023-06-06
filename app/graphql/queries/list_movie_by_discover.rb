@@ -8,11 +8,11 @@ module Queries
     argument :page, Integer, required: false
     argument :with_genres, ID, required: false
     argument :year, Integer, required: false
-    argument :vote_average, Integer, required: false
     argument :popularity, Integer, required: false
 
-    def resolve(sort_by:, page:, with_genres:, year:, vote_average:, popularity:)
-      tmdb_api.discover_movie(sort_by, page, with_genres, year, vote_average, popularity)
+    def resolve(sort_by:, page:, with_genres:, year:, popularity:)
+      @resolve ||= tmdb_api.discover_movie(sort_by, page, with_genres, year, popularity)
+      @resolve['results']
     end
   end
 end

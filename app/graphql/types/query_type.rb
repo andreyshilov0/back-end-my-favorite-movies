@@ -8,5 +8,6 @@ module Types
     field :list_genres, resolver: Queries::ListGenres
     field :list_movie_by_discover, resolver: Queries::ListMovieByDiscover
     field :total_pages, resolver: Queries::TotalPages
+    field :user, resolver: Queries::User
   end
 end

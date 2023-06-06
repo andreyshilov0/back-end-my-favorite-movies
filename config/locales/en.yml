@@ -6,3 +6,4 @@ en:
   favorite_genre_delete: "Error deleting favorite_genre"
   favorite_movie_delete: "Error deleting favorite_movie"
   total_pages: "Total pages"
+  user: "User"
