@@ -5,7 +5,8 @@ module Queries
     type [Types::TotalPagesType], null: false
 
     def resolve
-      tmdb_api.total_pages['total_pages']
+      @response ||= tmdb_api.total_pages['total_pages']
+      [{ total_pages: @response }]
     end
   end
 end

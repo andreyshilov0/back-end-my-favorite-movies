@@ -1,7 +1,6 @@
 module Mutations
   class FavoriteMovieUpdateWatched < BaseMutation
     field :favorite_movie, Types::FavoriteMovieType, null: false
-    
 
     argument :id, ID, required: true
 
