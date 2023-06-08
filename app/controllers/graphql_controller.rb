@@ -9,7 +9,8 @@ class GraphqlController < ApplicationController
     query = params[:query]
     operation_name = params[:operationName]
     context = {
-      current_user:
+      current_user:,
+      session:
     }
     result = BackEndMyFavoriteMoviesSchema.execute(query, variables:, context:, operation_name:)
     render json: result
