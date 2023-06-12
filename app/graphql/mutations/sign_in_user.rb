@@ -4,23 +4,16 @@ module Mutations
 
     argument :credentials, Types::AuthProviderCredentialsInput, required: false
 
-    field :token, String, null: true
-    field :user, Types::UserType, null: true
+    type Types::Payloads::SignInUserType
 
     def resolve(credentials: nil)
-      return unless credentials
+      result = login_user(credentials)
 
-      user = User.find_by email: credentials[:email]
+      result.success? ? result : execution_error(message: result.error)
+    end
 
-      return unless user
-
-      return unless user.authenticate(credentials[:password])
-
-      crypt = ActiveSupport::MessageEncryptor.new(Rails.application.credentials.secret_key_base.byteslice(0..31))
-      token = crypt.encrypt_and_sign("user-id:#{user.id}")
-      jwt_payload = JWT.decode(request.headers['Authorization'].split(' ')[1], Rails.application.credentials.secret_key_base)
-      current_user = User.find(jwt_payload['sub'])
-      { user:, token:, jwt_payload: }
+    def login_user(credentials: nil)
+      Users::Login.call(credentials)
     end
   end
 end

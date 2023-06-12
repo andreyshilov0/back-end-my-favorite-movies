@@ -4,17 +4,20 @@ module Mutations
       argument :credentials, Types::AuthProviderCredentialsInput, required: false
     end
 
-    argument :login, String, required: true
     argument :auth_provider, AuthProviderSignupData, required: false
 
-    type Types::UserType
+    type Types::Payloads::CreateUserType
 
-    def resolve(login: nil, auth_provider: nil)
-      User.create!(
-        login:,
-        email: auth_provider&.[](:credentials)&.[](:email),
-        password: auth_provider&.[](:credentials)&.[](:password)
-      )
+    def resolve(**params)
+      result = create_user(params)
+
+      result.success? ? result : execution_error(message: result.error)
+    end
+
+    private
+
+    def create_user(params)
+      Users::CreateUser.call(auth_provider: params)
     end
   end
 end
