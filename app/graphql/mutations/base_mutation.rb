@@ -8,11 +8,5 @@ module Mutations
     def tmdb_api
       @tmdb_api ||= TmdbApi.new
     end
-
-    private
-
-    def current_user
-      @current_user ||= context[:current_user]
-    end
   end
 end
