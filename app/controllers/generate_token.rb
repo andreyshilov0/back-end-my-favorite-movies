@@ -10,6 +10,8 @@ class GenerateToken < ApplicationController
 
     def encode_user_data(payload)
       JWT.encode payload, Rails.application.credentials.fetch(:secret_key_base), 'HS256'
+    rescue StandardError => e
+      logger.info e
     end
 
     def decode_user_data(token)
