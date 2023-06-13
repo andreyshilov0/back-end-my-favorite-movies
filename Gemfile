@@ -78,8 +78,6 @@ group :development do
 
   gem 'bcrypt', '~> 3.1.7'
 
-  gem 'interactor', '~> 3.0'
-
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 

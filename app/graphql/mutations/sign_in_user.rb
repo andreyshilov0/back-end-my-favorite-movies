@@ -1,19 +1,25 @@
 module Mutations
   class SignInUser < BaseMutation
-    null true
-
-    argument :credentials, Types::AuthProviderCredentialsInput, required: false
+    argument :credentials, Types::AuthProviderCredentialsInput, required: true
 
     type Types::Payloads::SignInUserType
 
     def resolve(credentials: nil)
-      result = login_user(credentials)
+      return unless credentials
 
-      result.success? ? result : execution_error(message: result.error)
-    end
+      user = User.find_by email: credentials[:email]
 
-    def login_user(credentials: nil)
-      Users::Login.call(credentials)
+      response = user.authenticate(credentials[:password])
+
+      return unless response
+
+      token = encode_user_data({ user_data: user.id })
+
+      crypt = ActiveSupport::MessageEncryptor.new(Rails.application.credentials.secret_key_base.byteslice(0..31))
+      token_crypt = crypt.encrypt_and_sign("id:#{user.id}")
+      context[:session][:token] = token_crypt
+
+      { user:, token: }
     end
   end
 end

@@ -1,4 +1,3 @@
 class ApplicationController < ActionController::API
-  include ActionController::MimeResponds
-  include AuthenticableUser
+  # before_action :authentication
 end
