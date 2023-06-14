@@ -1,20 +1,20 @@
 module Mutations
   class CreateUser < BaseMutation
-    argument :credentials, Types::AuthProviderCredentialsInput, required: false
+    argument :email, String, required: true
+    argument :password, String, required: true
 
-    type Types::Payloads::CreateUserType
+    field :user, Types::UserType, null: false
 
-    def resolve(credentials: nil)
-      create_user = User.new(
-        email: credentials&.[](:email),
-        password: credentials&.[](:password)
+    def resolve(email: nil, password: nil)
+      new_user = User.create!(
+        email:,
+        password:
       )
-      if create_user.save
-        token = encode_user_data({ user_data: create_user.id })
-        { token: }
-      else
-        { message: 'invalid credentials' }
-      end
+      new_user || { message: 'Invalid data' }
+
+      return unless new_user
+
+      { new_user: }
     end
   end
 end

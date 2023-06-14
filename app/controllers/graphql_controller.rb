@@ -9,7 +9,6 @@ class GraphqlController < ApplicationController
     query = params[:query]
     operation_name = params[:operationName]
     context = {
-      session:,
       current_user:
     }
     result = BackEndMyFavoriteMoviesSchema.execute(query, variables:, context:, operation_name:)
@@ -21,17 +20,6 @@ class GraphqlController < ApplicationController
   end
 
   private
-
-  def current_user
-    return unless session[:token]
-
-    crypt = ActiveSupport::MessageEncryptor.new(Rails.application.credentials.secret_key_base.byteslice(0..31))
-    token = crypt.decrypt_and_verify session[:token]
-    user_id = token.gsub('id:', '').to_i
-    User.find user_id
-  rescue ActiveSupport::MessageVerifier::InvalidSignature
-    nil
-  end
 
   # Handle variables in form data, JSON body, or a blank value
   def prepare_variables(variables_param)
