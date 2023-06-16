@@ -76,6 +76,8 @@ group :development do
 
   gem 'devise-jwt'
 
+  gem 'jwt'
+
   gem 'bcrypt', '~> 3.1.7'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
