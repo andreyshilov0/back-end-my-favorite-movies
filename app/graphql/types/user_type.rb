@@ -1,7 +1,6 @@
 module Types
   class UserType < Types::BaseObject
     field :id, ID, null: false
-    field :login, String
     field :email, String
     field :favorite_genres, [Types::GenreType]
     field :favorite_movies, [Types::FavoriteMovieType]

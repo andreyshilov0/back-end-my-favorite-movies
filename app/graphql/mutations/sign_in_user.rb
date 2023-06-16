@@ -6,15 +6,11 @@ module Mutations
     field :token, String, null: false
     field :user, Types::UserType, null: false
 
-    def resolve(email: nil, password: nil)
+    def resolve(email:, password:)
+      return nil unless email && password.present?
+
       user = User.find_by(email:)
-      response = user.valid_password?(password:)
-      if response
-        token = GenerateToken.generate_token(user)
-      else
-        StandardError => e
-        logger.info e
-      end
+      token = GenerateJwtToken.generate_token(user) if user && user.valid_password?(password:)
 
       return unless token
 

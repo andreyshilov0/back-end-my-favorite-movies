@@ -5,10 +5,10 @@ class Authentication
     split_token = token.split(' ').last
 
     decoded_token = JWT.decode(split_token, ENV['HMAC_SECRET'], true, { algorithm: ENV['HMAC_ALGORITHM'] })
-    null_hash = {}
-    payload_data = decoded_token[0]
-    header_data = decoded_token[1]
-    merge_hash = null_hash.merge(payload_data, header_data)
-    @current_user ||= User.find_by(id: merge_hash['id'])
+
+    null_hash = [{}]
+    decoded_token.each { |hash| null_hash[0].merge!(hash) }
+    payload_data = null_hash.first
+    User.find_by(id: payload_data['id'])
   end
 end
