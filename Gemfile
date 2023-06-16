@@ -74,8 +74,6 @@ group :development do
 
   gem 'devise'
 
-  gem 'devise-jwt'
-
   gem 'jwt'
 
   gem 'bcrypt', '~> 3.1.7'
