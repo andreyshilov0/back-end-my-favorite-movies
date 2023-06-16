@@ -10,8 +10,7 @@ module Mutations
       user = User.find_by(email:)
       response = user.valid_password?(password:)
       if response
-        auth_user = user.jwt_payload
-        token = GenerateToken.generate_token(auth_user)
+        token = GenerateToken.generate_token(user)
       else
         StandardError => e
         logger.info e
