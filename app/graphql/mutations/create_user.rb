@@ -12,7 +12,7 @@ module Mutations
         password:
       )
 
-      token = GenerateJwtToken.generate_token(new_user)
+      token = GenerateJwtToken.generate_token(new_user) if new_user.persisted?
       { new_user:, token: }
     end
   end
