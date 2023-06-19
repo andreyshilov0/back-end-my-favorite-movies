@@ -7,7 +7,7 @@ class Authentication
     decoded_token = JWT.decode(split_token, ENV['HMAC_SECRET'], true, { algorithm: ENV['HMAC_ALGORITHM'] })
 
     combined_hash = {}
-    decoded_token.map { |hash| combined_hash.merge!(hash) }
+    decoded_token.each { |hash| combined_hash.merge!(hash) }
     User.find_by(id: combined_hash['id'])
   end
 end
