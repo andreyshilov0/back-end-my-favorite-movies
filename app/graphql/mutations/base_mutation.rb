@@ -13,7 +13,7 @@ module Mutations
       @current_user ||= context[:current_user]
     end
 
-    def return_execution_error(message)
+    def execution_error(message)
       GraphQL::ExecutionError.new(message)
     end
   end

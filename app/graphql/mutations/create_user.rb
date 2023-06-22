@@ -11,7 +11,7 @@ module Mutations
         email:,
         password:
       )
-      return return_execution_error('No valid email or password') unless new_user.save
+      return execution_error(I18n.t('invalid_email_password')) unless new_user.save
 
       token = GenerateJwtToken.generate_token(new_user)
 

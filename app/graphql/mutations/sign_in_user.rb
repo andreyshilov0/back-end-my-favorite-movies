@@ -6,22 +6,14 @@ module Mutations
     field :token, String, null: false
     field :user, Types::UserType, null: false
 
-    def authenticate_user(email, password)
-      user = User.find_by(email:)
-
-      return nil unless user
-
-      user if user.valid_password?(password)
-    end
-
     def resolve(email:, password:)
-      return return_execution_error('Email and password are required') unless email.present? && password.present?
+      return execution_error(I18n.t('email_password_required')) unless email.present? && password.present?
 
-      user = authenticate_user(email, password)
-      return return_execution_error('Invalid email or password') unless user
+      user = User.find_by(email:)
+      return execution_error(I18n.t('invalid_email_password')) unless user&.valid_password?(password)
 
       token = GenerateJwtToken.generate_token(user)
-      return return_execution_error('Unable to generate token') unless token
+      return execution_error(I18n.t('unable_generate_token')) unless token
 
       { user:, token: }
     end
