@@ -15,13 +15,13 @@ module Mutations
     end
 
     def resolve(email:, password:)
-      return GraphQL::ExecutionError.new('Email and password are required') unless email.present? && password.present?
+      return return_execution_error('Email and password are required') unless email.present? && password.present?
 
       user = authenticate_user(email, password)
-      return GraphQL::ExecutionError.new('Invalid email or password') unless user
+      return return_execution_error('Invalid email or password') unless user
 
       token = GenerateJwtToken.generate_token(user)
-      return GraphQL::ExecutionError.new('Unable to generate token') unless token
+      return return_execution_error('Unable to generate token') unless token
 
       { user:, token: }
     end

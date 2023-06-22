@@ -11,7 +11,7 @@ module Mutations
         email:,
         password:
       )
-      raise GraphQL::ExecutionError, new_user.errors.full_messages.join(', ') unless new_user.save
+      return return_execution_error('No valid email or password') unless new_user.save
 
       token = GenerateJwtToken.generate_token(new_user)
 
