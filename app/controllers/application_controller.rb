@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::API
-  def current_user
-    User.find_by(id: 1)
+  before_action :authenticate!
+
+  def authenticate!
+    Authentication.authenticate_request(request.headers['HTTP_AUTHORIZATION'])
   end
 end

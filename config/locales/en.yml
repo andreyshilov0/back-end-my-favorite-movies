@@ -7,3 +7,8 @@ en:
   favorite_movie_delete: "Error deleting favorite_movie"
   total_pages: "Total pages"
   user: "User"
+  email_password_required: "Email and password are required"
+  invalid_email_password: "Invalid email or password"
+  unable_generate_token: "Unable to generate token"
+  invalid_email: "Invalid email"
+  invalid_password: "Invalid_password"

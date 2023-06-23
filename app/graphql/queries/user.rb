@@ -5,7 +5,7 @@ module Queries
     type [Types::UserType], null: true
 
     def resolve
-      [{ login: current_user['login'], id: current_user['id'] }]
+      [{ email: current_user['email'], id: current_user['id'] }]
     end
   end
 end

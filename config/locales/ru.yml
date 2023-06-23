@@ -7,3 +7,8 @@ ru:
   favorite_movie_delete: "Ошибка удаления фильма"
   total_pages: "Общее число страниц"
   user: "Пользователь"
+  email_password_required: "Электронная почта и пароль обязательны"
+  invalid_email_password: "Электронная почта или пароль не действительные"
+  unable_generate_token: "Не удалось сгенерировать токен"
+  invalid_email: "Неправильная электронная почта"
+  invalid_password: "Неправильный пароль"

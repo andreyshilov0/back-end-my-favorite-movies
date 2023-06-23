@@ -8,5 +8,13 @@ module Mutations
     def tmdb_api
       @tmdb_api ||= TmdbApi.new
     end
+
+    def current_user
+      @current_user ||= context[:current_user]
+    end
+
+    def execution_error(message)
+      GraphQL::ExecutionError.new(message)
+    end
   end
 end
