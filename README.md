@@ -13,3 +13,5 @@ Add 2 files to config/
 credentials.yml.enc
 
 master.key
+
+Enable VPN
