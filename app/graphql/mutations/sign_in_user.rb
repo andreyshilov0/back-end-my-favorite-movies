@@ -11,10 +11,11 @@ module Mutations
       return execution_error(I18n.t('invalid_email')) unless user
 
       if user.valid_password?(password)
-        token = GenerateJwtToken.generate_token(user)
+        payload = { id: user.id, email: user.email }
+        token = GenerateJwtToken.generate_token(payload)
         execution_error(I18n.t('unable_generate_token')) unless token
-
         { user:, token: }
+
       else
         execution_error(I18n.t('invalid_password'))
       end

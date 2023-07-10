@@ -6,7 +6,7 @@ module Queries
 
     argument :sort_by, String, required: false
     argument :page, Integer, required: false
-    argument :with_genres, ID, required: false
+    argument :with_genres, [ID], required: false
     argument :year, Integer, required: false
     argument :popularity, Integer, required: false
 
