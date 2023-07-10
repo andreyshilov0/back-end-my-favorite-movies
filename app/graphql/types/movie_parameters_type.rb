@@ -2,7 +2,7 @@ module Types
   class MovieParametersType < Types::BaseObject
     field :sort_by, String
     field :page, Integer
-    field :with_genres, Integer
+    field :with_genres, [Integer]
     field :year, Integer
     field :popularity, Integer
     field :id, Integer

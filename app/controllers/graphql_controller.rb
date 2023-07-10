@@ -42,6 +42,7 @@ class GraphqlController < ApplicationController
   end
 
   def handle_error_in_development(e)
+    logger = Rails.logger
     logger.error e.message
     logger.error e.backtrace.join("\n")
 
