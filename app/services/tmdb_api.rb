@@ -22,9 +22,16 @@ class TmdbApi
     tmdb_api.get_api_data('genre/movie/list')
   end
 
-  def discover_movie(sort_by, page, with_genres, year, popularity)
-    tmdb_api.get_api_data('discover/movie', { 'sort_by' => sort_by, 'page' => page, 'with_genres' => with_genres, 'year' => year,
-                                              'popularity' => popularity })
+  def discover_movie(sort_by, page, with_genres, year, vote_average_lte, language)
+    with_genres = with_genres.join(',') if with_genres.is_a?(Array)
+    tmdb_api.get_api_data('discover/movie', {
+                            'sort_by' => sort_by,
+                            'page' => page,
+                            'with_genres' => with_genres,
+                            'year' => year,
+                            'vote_average.lte' => vote_average_lte,
+                            'language' => language
+                          })
   end
 
   def movie_by_id(id)

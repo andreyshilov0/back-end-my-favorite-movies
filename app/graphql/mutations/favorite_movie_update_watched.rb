@@ -6,7 +6,8 @@ module Mutations
 
     def resolve(id:)
       favorite_movie = FavoriteMovie.find(id)
-      unless favorite_movie.update(watched: true)
+      new_watched_value = !favorite_movie.watched
+      unless favorite_movie.update(watched: new_watched_value)
         raise GraphQL::ExecutionError.new I18n.t('favorite_movie_update'),
                                           extensions: favorite_movie.errors.to_hash
       end

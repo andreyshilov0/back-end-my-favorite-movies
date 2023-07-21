@@ -4,12 +4,13 @@ module Types
     field :page, Integer
     field :with_genres, [Integer]
     field :year, Integer
-    field :popularity, Integer
-    field :id, Integer
+    field :vote_average, Integer
+    field :id, Integer, null: true
     field :title, String
     field :overview, String
     field :release_date, Integer
     field :poster_path, String
-    field :total_pages, Integer
+    field :total_pages, Integer, null: true
+    field :language, String
   end
 end
