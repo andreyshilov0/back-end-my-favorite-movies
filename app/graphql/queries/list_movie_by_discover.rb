@@ -2,7 +2,7 @@ module Queries
   class ListMovieByDiscover < Queries::BaseQuery
     description I18n.t('list_movie_by_discover')
 
-    type [Types::MovieParametersType], null: false
+    type Types::ListMovieByDiscoverResponseType, null: false
 
     argument :sort_by, String, required: false
     argument :page, Integer, required: false
@@ -12,8 +12,14 @@ module Queries
     argument :language, String, required: false
 
     def resolve(sort_by:, page:, with_genres:, year:, vote_average:, language:)
-      @resolve ||= tmdb_api.discover_movie(sort_by, page, with_genres, year, vote_average, language)
-      @resolve['results']
+      response = tmdb_api.discover_movie(sort_by, page, with_genres, year, vote_average, language)
+      movies = response['results']
+      total_pages = response['total_pages']
+
+      {
+        movies:,
+        total_pages:
+      }
     end
   end
 end
